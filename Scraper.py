@@ -49,7 +49,7 @@ while True:
             print(stock_info)
 
             # Skriv data til CSV fil
-            writer.writerow([tidskode, company, price, volume, market_cap])
+            writer.writerow([tidskode, company, (f'{price} USD'), (f'Volume: {volume}'), (f'Market cap: {market_cap}')])
             
     # Pause i 60 sekunder før der fortsættes til næste iteration
     time.sleep(10)
