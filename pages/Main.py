@@ -1,5 +1,7 @@
 import yfinance as yf
 import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
 
 from Hjem import display_hjem
 from AMD import display_AMD
@@ -9,6 +11,15 @@ from Apple import display_apple
 from Ralph import display_ralph
 from Google import display_google
 from nvidia import display_nvidia
+
+
+
+
+
+
+
+
+
 # Sidebar navigation    
 page = st.sidebar.radio("Navigation", ["Hjem", "AMD", "Netflix", "Microsoft", "Apple", "Ralph Lauren", "Google", "Nvidia"])
 
@@ -30,9 +41,3 @@ elif page == "Google":
 elif page == "Nvidia":
     display_nvidia()
 
-    
-
-
-#tab1, tab2 = st.tabs(["Tab 1", "Tab2"])
-#tab1.write("this is tab 1")
-#tab2.write("this is tab 2")
