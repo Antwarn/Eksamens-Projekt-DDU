@@ -14,7 +14,7 @@ class StockInfoAnalyzer:
                 current_price = self.df.iloc[self.line_number, 2]  # Assuming the price is in the third column
                 change = ((current_price - prev_price) / prev_price) * 100
                 comp = self.df.iloc[prev_index, 1]  # Assuming the company name is in the second column
-                print(f'Line: {comp}, Price: {current_price}, {prev_price} Change: {change}')
+                print(f'Comp: {comp}, Price: {current_price}, {prev_price} Change: {change}')
                 #print(f'Prev: {prev_price} Line: {self.line_number} Prev_index: {prev_index} Current: {current_price}') 
                 #print(f"Change for company {comp} in line {self.line_number}: {change}")
 
