@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 import time
+import change as ch
 
 urls = [
     'https://www.investing.com/equities/microsoft-corp',
