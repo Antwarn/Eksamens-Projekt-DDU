@@ -3,7 +3,6 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 import time
-import change as ch
 
 urls = [
     'https://www.investing.com/equities/microsoft-corp',
@@ -45,7 +44,6 @@ while True:
             if close_price_element:
                 close_price_text = close_price_element.text
                 close_price = float(close_price_text)
-            #change = 
             volume_element = soup.find_all(class_ = 'key-info_dd-numeric__ZQFIs')
 
             if volume_element:
