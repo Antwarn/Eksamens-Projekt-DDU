@@ -14,7 +14,7 @@ urls = [
 ]
 
 csv_filename = 'stockinfo.csv'
-headers = ['Time', 'Company', 'Price', 'Volume', 'Market Cap']
+headers = ['Time', 'Company', 'Open', 'High', 'Low', 'Last','Close' ,'Volume', 'Market Cap']
 
 while True:
     tidskode = time.strftime('%Y-%m-%d %H:%M:%S')
@@ -38,23 +38,38 @@ while True:
             price_element = soup.find('div', {'class': 'text-5xl/9 font-bold text-[#232526] md:text-[42px] md:leading-[60px]'})
             if price_element:
                 price_text = price_element.text
-                price = float(price_text)
+                Last = float(price_text)
         
             close_price_element = soup.find('span', {'class': 'key-info_dd-numeric__ZQFIs'})
             if close_price_element:
                 close_price_text = close_price_element.text
-                close_price = float(close_price_text)
-            volume_element = soup.find_all(class_ = 'key-info_dd-numeric__ZQFIs')
+                Close = float(close_price_text)
 
+            volume_element = soup.find_all(class_ = 'key-info_dd-numeric__ZQFIs')
             if volume_element:
                 volumen_text = volume_element[9].text.replace(',','')
                 volume = float(volumen_text)
 
-            market_cap = close_price * volume
+            Open_price_element = soup.find_all(class_ = 'key-info_dd-numeric__ZQFIs')
+            if Open_price_element:
+                Open_price_text = Open_price_element[1].text.replace(',','')
+                Open = float(Open_price_text)
 
-            stock_info = [tidskode, company, price, volume, market_cap]
-            print(stock_info)
+            High_price_element = soup.find_all(class_ = 'key-info_dd-numeric__ZQFIs')
+            if High_price_element:
+                High_price_text = High_price_element[3].text.replace(',','')
+                High = float(High_price_text)
 
-            writer.writerow([tidskode, company, price ,volume, market_cap])
+            Low_price_element = soup.find_all(class_ = 'key-info_dd-numeric__ZQFIs')
+            if Low_price_element:
+                Low_price_text = Low_price_element[2].text.replace(',','')
+                Low = float(Low_price_text)
+
+            market_cap = Close * volume
+
+            stock_info = [tidskode, company, Open, High, Low, Last, Close, volume, market_cap]
+            print(Low)
+
+            writer.writerow([tidskode, company, Open, High, Low, Last, Close, volume, market_cap])
     
     time.sleep(10)   
