@@ -14,7 +14,7 @@ urls = [
 ]
 
 csv_filename = 'stockinfo.csv'
-headers = ['Time', 'Company', 'Open', 'High', 'Low', 'Last','Close' ,'Volume', 'Market Cap']
+headers = ['Time','Open', 'High', 'Low', 'Last','Close' ,'Volume']
 
 while True:
     tidskode = time.strftime('%Y-%m-%d %H:%M:%S')
@@ -70,6 +70,6 @@ while True:
             stock_info = [tidskode, company, Open, High, Low, Last, Close, volume, market_cap]
             print(Low)
 
-            writer.writerow([tidskode, company, Open, High, Low, Last, Close, volume, market_cap])
+            writer.writerow([tidskode, Open, High, Low, Last, Close, volume])
     
     time.sleep(10)   
