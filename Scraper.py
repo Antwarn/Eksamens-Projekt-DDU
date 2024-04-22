@@ -67,8 +67,8 @@ while True:
 
             market_cap = Close * volume
 
-            stock_info = [tidskode, company, Open, High, Low, Last, Close, volume, market_cap]
-            print(Low)
+            stock_info = [tidskode, company, Open, High, Low, Last, Close, volume]
+            print(stock_info)
 
             writer.writerow([tidskode, company, Open, High, Low, Last, Close, volume])
     
