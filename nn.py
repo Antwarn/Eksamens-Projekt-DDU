@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-url = 'https://raw.githubusercontent.com/mwitiderrick/stockprice/master/NSE-TATAGLOBAL.csv'
-dataset_train = pd.read_csv(url)
+data = 'stockinfo.csv'
+dataset_train = pd.read_csv(data)
 training_set = dataset_train.iloc[:, 1:2].values
 
 dataset_train.head()
