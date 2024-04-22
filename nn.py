@@ -40,8 +40,8 @@ model.add(Dense(units=1))
 model.compile(optimizer='adam',loss='mean_squared_error')
 model.fit(X_train,y_train,epochs=100,batch_size=32)
 
-url = 'https://raw.githubusercontent.com/mwitiderrick/stockprice/master/tatatest.csv'
-dataset_test = pd.read_csv(url)
+data = pd.read_csv('stockinfo.csv')
+dataset_test = pd.read_csv(data)
 real_stock_price = dataset_test.iloc[:, 1:2].values
 
 dataset_total = pd.concat((dataset_train['Open'], dataset_test['Open']), axis = 0)
