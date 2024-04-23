@@ -6,7 +6,7 @@ from keras.models import Sequential
 from keras.layers import LSTM, Dropout, Dense
 
 # Load the data
-data = './output/Microsoft Corporation (MSFT).csv'
+data = './output/'
 dataset = pd.read_csv(data)
 # Remove 'Company' column from the dataset
 dataset_train = dataset.drop(columns=['company'])
