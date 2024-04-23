@@ -6,7 +6,7 @@ from keras.models import Sequential
 from keras.layers import LSTM, Dropout, Dense
 
 # Load the data
-data = './output/Alphabet Inc Class A (GOOGL).csv'
+data = './output/Microsoft Corporation (MSFT).csv'
 dataset = pd.read_csv(data)
 # Remove 'Company' column from the dataset
 dataset_train = dataset.drop(columns=['company'])
@@ -58,10 +58,10 @@ predicted_stock_price = model.predict(X_test)
 predicted_stock_price = sc.inverse_transform(predicted_stock_price)
 
 # Visualize the results
-plt.plot(dataset['Open'].values, color='black', label='Real Stock Price')
-plt.plot(predicted_stock_price, color='green', label='Predicted Stock Price')
-plt.title('Stock Price Prediction')
-plt.xlabel('Time')
-plt.ylabel('Stock Price')
+plt.plot(dataset['Open'].values, color='black', label='Rigtige aktie pris')
+plt.plot(predicted_stock_price, color='green', label='Forudsagte aktie pris')
+plt.title('Forusigelse')
+plt.xlabel('Tid')
+plt.ylabel('pris')
 plt.legend()
 plt.show()
