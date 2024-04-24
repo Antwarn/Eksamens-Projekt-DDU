@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-input_file = 'stockinfo (1).csv'
+input_file = 'stockinfo (2).csv'
 output_folder = 'output'
 
 # Create output folder if it doesn't exist
