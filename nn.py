@@ -73,11 +73,10 @@ class StockPricePredictor:
         plt.xlabel('Tid')
         plt.ylabel('pris')
         plt.legend()
-        plt.savefig('5000epoch')
         plt.show()
 
 if __name__ == "__main__":
-    data_file = 'Testdata.csv'
+    data_file = './output/AlphabetIncClassAGOOGL.csv'
     predictor = StockPricePredictor(data_file)
     predictor.load_data()
     predictor.scale_data()
