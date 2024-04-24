@@ -73,10 +73,11 @@ class StockPricePredictor:
         plt.xlabel('Tid')
         plt.ylabel('pris')
         plt.legend()
+        plt.savefig('5000epoch')
         plt.show()
 
 if __name__ == "__main__":
-    data_file = './output/Ralph Lauren Corp Class A (RL).csv'
+    data_file = 'Testdata.csv'
     predictor = StockPricePredictor(data_file)
     predictor.load_data()
     predictor.scale_data()
