@@ -76,7 +76,7 @@ class StockPricePredictor:
         plt.show()
 
 if __name__ == "__main__":
-    data_file = './output/AlphabetIncClassAGOOGL.csv'
+    data_file = 'google_filtered_dataset.csv'
     predictor = StockPricePredictor(data_file)
     predictor.load_data()
     predictor.scale_data()
