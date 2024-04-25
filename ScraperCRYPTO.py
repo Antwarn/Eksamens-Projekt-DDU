@@ -70,4 +70,4 @@ while True:
 
             writer.writerow([tidskode, company, Open, High, Low, Last, Close, volume])
     
-    time.sleep(10)   
+    time.sleep(900)   
