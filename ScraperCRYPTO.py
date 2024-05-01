@@ -5,15 +5,13 @@ import csv
 import time
 
 urls = [
-    'https://www.investing.com/equities/microsoft-corp',
-    'https://www.investing.com/equities/apple-computer-inc',
-    'https://www.investing.com/equities/netflix,-inc.',
-    'https://www.investing.com/equities/polo-ralph-laur',
-    'https://www.investing.com/equities/google-inc',
-    'https://www.investing.com/equities/nvidia-corp'
+    'https://www.investing.com/equities/novo-nordisk',
+    'https://www.investing.com/equities/dong-energy-as',
+    'https://www.investing.com/equities/iss-a-s',
+    'https://www.investing.com/equities/vestas-wind'
 ]
 
-csv_filename = 'stockinfo.csv'
+csv_filename = 'danskStockinfo.csv'
 headers = ['Time', 'company', 'Open', 'High', 'Low', 'Last','Close' ,'Volume']
 
 while True:
@@ -72,4 +70,4 @@ while True:
 
             writer.writerow([tidskode, company, Open, High, Low, Last, Close, volume])
     
-    time.sleep(10)   
+    time.sleep(900)   
