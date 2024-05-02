@@ -1,15 +1,34 @@
-import yfinance as yf
 import streamlit as st
+import matplotlib.pyplot as plt
+import csv
+import mpld3
+import streamlit.components.v1 as components
+
+
 
 def display_micro():
-    st.header("Microsoft")
-    st.write("### Microsoft's aktier fra starten af 2023")
-    micro = 'MSFT'
-    #get data on this ticker
-    tickerData = yf.Ticker(micro)
-    #get the historical prices for this ticker
-    tickerDf = tickerData.history(period='1d', start='2023-1-1', end='2024-3-15')
-    # Open	High	Low	Close	Volume	Dividends	Stock Splits
+    
+    with open('stockinfo.csv', 'r') as csvfile:
+        csv_reader = csv.reader(csvfile)
+        data = []
+        line_number = 0
 
-    st.line_chart(tickerDf.Close)
-    #st.line_chart(tickerDf.Volume)
+        for row in csv_reader:
+            if line_number % 6 == 0:
+                time = row[0]
+                price = row[2]
+                volume = row[3]
+                mc = row[4]
+                point = [time, price, volume, mc]
+                data.append(point)
+            line_number += 1
+
+    price = [float(i[1]) for i in data]
+    time = [i[0] for i in data]
+
+
+    fig = plt.figure()
+    plt.plot(time, price)
+
+    fig_html = mpld3.fig_to_html(fig)
+    components.html(fig_html, height=600)

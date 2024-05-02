@@ -4,7 +4,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from Hjem import display_hjem
-from AMD import display_AMD
 from Netflix import display_netflix
 from Microsoft import display_micro
 from Apple import display_apple
@@ -21,13 +20,11 @@ from nvidia import display_nvidia
 
 
 # Sidebar navigation    
-page = st.sidebar.radio("Navigation", ["Hjem", "AMD", "Netflix", "Microsoft", "Apple", "Ralph Lauren", "Google", "Nvidia"])
+page = st.sidebar.radio("Navigation", ["Hjem", "Netflix", "Microsoft", "Apple", "Ralph Lauren", "Google", "Nvidia"])
 
 # Display different content based on the selected page
 if page == "Hjem":
     display_hjem()
-elif page == "AMD":
-    display_AMD()
 elif page == "Netflix":
     display_netflix()
 elif page == "Microsoft":
