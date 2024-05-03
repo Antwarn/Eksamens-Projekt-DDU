@@ -2,8 +2,8 @@ import pandas as pd
 import os
 import re
 
-input_file = 'danskStockinfo(2).csv'
-output_folder = 'output'
+input_file = 'stockinfo (7).csv'
+output_folder = 'output02052024'
 
 # Create output folder if it doesn't exist
 if not os.path.exists(output_folder):

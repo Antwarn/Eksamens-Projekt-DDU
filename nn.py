@@ -67,16 +67,17 @@ class StockPricePredictor:
         return self.sc.inverse_transform(predicted_stock_price)
 
     def visualize_results(self, predicted_stock_price):
-        plt.plot(self.dataset['Open'].values, color='black', label='Rigtige aktie pris')
+        plt.plot(self.dataset['Last'].values, color='black', label='Rigtige aktie pris')
         plt.plot(predicted_stock_price, color='green', label='Forudsagte aktie pris')
         plt.title('Forusigelse')
         plt.xlabel('Tid')
         plt.ylabel('pris')
         plt.legend()
+        plt.savefig('5epoc')
         plt.show()
 
 if __name__ == "__main__":
-    data_file = 'google_filtered_dataset.csv'
+    data_file = 'google26.csv'
     predictor = StockPricePredictor(data_file)
     predictor.load_data()
     predictor.scale_data()
