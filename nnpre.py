@@ -53,7 +53,7 @@ class StockPricePredictor:
         self.model.fit(self.X_train, self.y_train, epochs=epochs, batch_size=batch_size)
 
     def prepare_test_data(self):
-        dataset_total = pd.concat((self.dataset_train['Last'], self.dataset['Last']), axis=0)
+        dataset_total = pd.concat((self.dataset_train['Open'], self.dataset['Open']), axis=0)
         inputs = dataset_total[len(dataset_total) - len(self.dataset) - 60:].values.reshape(-1, 1)
         inputs = self.sc.transform(inputs)
         X_test = []
@@ -68,7 +68,14 @@ class StockPricePredictor:
 
     def visualize_results(self, predicted_stock_price):
         plt.plot(self.dataset['Last'].values, color='black', label='Rigtige aktie pris')
-        plt.plot(predicted_stock_price, color='green', label='Forudsagte aktie pris')
+        
+        # Extend the x-axis for predicted prices
+        x_axis_predicted = np.arange(len(self.dataset['Last']), len(self.dataset['Last']) + len(predicted_stock_price))
+        
+        # Extend the predicted prices to match the length of the actual data plus half the length of the predicted prices
+        predicted_stock_price_extended = np.concatenate((self.dataset['Last'].iloc[-1:] * np.ones(len(self.dataset) + int(0.5 * len(predicted_stock_price))), predicted_stock_price.flatten()))
+        
+        plt.plot(x_axis_predicted, predicted_stock_price_extended, color='green', label='Forudsagte aktie pris')
         plt.title('Forusigelse')
         plt.xlabel('Tid')
         plt.ylabel('pris')
