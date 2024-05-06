@@ -30,10 +30,10 @@ def display_apple():
                 price = row[5]
                 close = row[6]
                 volume = row[7]
-                point = [time, price,opn,high,low,close,volume]
+                point = [time, price, opn, high, low, close, volume]
                 data.append(point)
             line_number += 1
-    
+
     # Fjern uønskede rækker baseret på klokkeslæt
     filtered_data = filter_rows(data)
 
@@ -45,9 +45,13 @@ def display_apple():
     close = [float(i[5]) for i in filtered_data]
     volume = [float(i[6]) for i in filtered_data]
 
-    plot = plt.figure(figsize=(7,7))
+    plot = plt.figure(figsize=(7, 7))
 
-    plt.plot(time, price, color='tab:orange', linestyle='solid', marker='.')
+    for i in range(len(price) - 1):
+        if price[i] < price[i + 1]:
+            plt.plot(time[i:i + 2], price[i:i + 2], color='green', linestyle='solid', marker='.')
+        else:
+            plt.plot(time[i:i + 2], price[i:i + 2], color='red', linestyle='solid', marker='.')
 
     css = """
     table
@@ -79,10 +83,10 @@ def display_apple():
             for x, y in xy_data:
                 html_label = f'<table border="1" class="dataframe"> <thead> <tr style="text-align: right;"> </thead> <tbody> <tr> <th>Time</th> <td>{time[i]}</td> </tr> <tr> <th>Price</th> <td>${y}</td> </tr> <tr> <th>Open</th> <td>${opn[i]}</td> </tr> <tr> <th>High</th> <td>${high[i]}</td> </tr><tr> <th>Low</th> <td>${low[i]}</td> </tr><tr> <th>Close</th> <td>${close[i]}</td> </tr> <tr> <th>Volume</th> <td>{volume[i]}</td> </tr> </tbody> </table>'
                 labels.append(html_label)
-                i = i+1
+                i += 1
             tooltip = plugins.PointHTMLTooltip(line, labels, css=css)
             plugins.connect(plot, tooltip)
-    
+
     fig_html = mpld3.fig_to_html(plot)
     components.html(fig_html, width=800, height=800)
 
@@ -90,4 +94,5 @@ def display_apple():
     with open('ny_stockinfo.csv', 'w', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerows(filtered_data)
+
 
