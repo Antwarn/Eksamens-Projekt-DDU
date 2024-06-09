@@ -3,7 +3,7 @@ import os
 import re
 
 input_file = 'stockinfo (7).csv'
-output_folder = 'output02052024'
+output_folder = 'output09'
 
 # Create output folder if it doesn't exist
 if not os.path.exists(output_folder):

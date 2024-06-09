@@ -72,11 +72,12 @@ class StockPricePredictor:
         plt.title('Forusigelse')
         plt.xlabel('Tid')
         plt.ylabel('pris')
+        plt.savefig('nvida09')
         plt.legend()
         plt.show()
 
 if __name__ == "__main__":
-    data_file = 'google26.csv'
+    data_file = 'nvida09.csv'
     predictor = StockPricePredictor(data_file)
     predictor.load_data()
     predictor.scale_data()
